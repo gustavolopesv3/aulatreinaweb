@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'treinaweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gerenciador_tarefas'),
-        'USER':,'root'
+        'NAME': 'gerenciador_tarefas',
+        'USER': 'root',
         'PASSWORD':'lp2409',
-        'PORT': '3306'
+        'PORT': '3306',
     }
 }
 
