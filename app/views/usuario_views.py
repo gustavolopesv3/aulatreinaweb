@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 
 @login_required()
@@ -17,7 +17,6 @@ def cadastrar_usuario(request):
 
 
 
-@login_required()
 def logar_usuario(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -33,3 +32,6 @@ def logar_usuario(request):
         form_login = AuthenticationForm()
     return render(request,'usuarios/login.html',{'form_login': form_login})
 
+def deslogar_usuario(request):
+    logout(request)
+    return redirect('logar_usuario')
