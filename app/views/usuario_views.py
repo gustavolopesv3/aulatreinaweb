@@ -1,5 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 def cadastrar_usuario(request):
@@ -11,3 +13,20 @@ def cadastrar_usuario(request):
     else:
         form_usuario = UserCreationForm()
     return render(request,'usuarios/form_usuario.html', {'form_usuario': form_usuario})
+
+
+
+
+def logar_usuario(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        usuario = authenticate(request, username=username,password=password)
+        if usuario is not None:
+            login(request, usuario)
+            return redirect('listar_tarefas')
+        else:
+            messages.erros(request, 'As credenciais do usuario estão incorretas')
+    else:
+        form_login = AuthenticationForm()
+    return render(request,'usuarios/login.html',{'form_login': form_login})
