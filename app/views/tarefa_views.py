@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import TarefaForm
-from .entidades.tarefa import Tarefa
-from .services import tarefa_service
+from app.forms import TarefaForm
+from app.entidades.tarefa import Tarefa
+from app.services import tarefa_service
 def listar_tarefas(request):
     tarefas = tarefa_service.listar_tarefas()
-    return render(request, 'tarefas/listar_tarefas.html',{'tarefas': tarefas})
+    return render(request, 'tarefas/listar_tarefas.html', {'tarefas': tarefas})
 
 def cadastrar_tarefa(request):
     if request.method == 'POST':
@@ -20,7 +20,7 @@ def cadastrar_tarefa(request):
             return redirect('listar_tarefas')
     else:
         form_tarefa = TarefaForm()
-    return render(request, 'tarefas/form_tarefa.html',{'form_tarefa': form_tarefa})
+    return render(request, 'tarefas/form_tarefa.html', {'form_tarefa': form_tarefa})
 
 def editar_tarefa(request, id):
     tarefa_db = tarefa_service.listar_tarefas_id(id)
