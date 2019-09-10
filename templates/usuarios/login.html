@@ -3,6 +3,11 @@
 {% block conteudo %}
 <form method="post">
 {% csrf_token %}
+    {% for message in messages %}
+        <div class=" alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="form-group">
         <label>Nome de usuario:</label>
         {{ form_login.username|addclass:'form-control' }}
