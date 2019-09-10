@@ -1,9 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-
+@login_required()
 def cadastrar_usuario(request):
     if request.method == 'POST':
         form_usuario = UserCreationForm(request.POST)
@@ -16,7 +17,7 @@ def cadastrar_usuario(request):
 
 
 
-
+@login_required()
 def logar_usuario(request):
     if request.method == 'POST':
         username = request.POST['username']
