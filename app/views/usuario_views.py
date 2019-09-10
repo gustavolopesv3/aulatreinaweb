@@ -26,7 +26,9 @@ def logar_usuario(request):
             login(request, usuario)
             return redirect('listar_tarefas')
         else:
-            messages.erros(request, 'As credenciais do usuario estão incorretas')
+            messages.error(request, 'As credenciais do usuario estão incorretas')
+            return redirect('logar_usuario')
     else:
         form_login = AuthenticationForm()
     return render(request,'usuarios/login.html',{'form_login': form_login})
+
