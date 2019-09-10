@@ -17,21 +17,21 @@ class Tarefa():
     @property
     def descricao(self):
         return self.__descricao
-    @titulo.setter
+    @descricao.setter
     def descricao(self, descricao):
         self.__descricao = descricao
 
     @property
     def data_expiracao(self):
         return self.__data_expiracao
-    @titulo.setter
+    @data_expiracao.setter
     def data_expiracao(self, data_expiracao):
         self.__data_expiracao = data_expiracao
 
     @property
     def prioridade(self):
         return self.__prioridade
-    @titulo.setter
+    @prioridade.setter
     def prioridade(self, prioridade):
         self.__prioridade = prioridade
 
