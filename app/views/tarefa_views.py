@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from app.forms import TarefaForm
-from app.entidades.tarefa import Tarefa
-from app.services import tarefa_service
+from ..forms import TarefaForm
+from ..entidades.tarefa import Tarefa
+from ..services import tarefa_service
 def listar_tarefas(request):
     tarefas = tarefa_service.listar_tarefas()
     return render(request, 'tarefas/listar_tarefas.html', {'tarefas': tarefas})
